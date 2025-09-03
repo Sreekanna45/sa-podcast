@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SPECANCIENS &mdash;The Alumni Association of SPEC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900"> 
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+      /* Live Discussion Panel Styles */
+      #discussion-toggle {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        background-color: #71bc42; /* A color from the template */
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 28px;
+        line-height: 60px;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard */
+      }
+    
+      #live-discussion-panel {
+        position: fixed;
+        top: 0;
+        right: -360px; /* Initially hidden */
+        width: 350px;
+        height: 100%;
+        background-color: #f8f9fa;
+        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+        z-index: 1001;
+        transition: right 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Poppins', sans-serif;
+      }
+    
+      #live-discussion-panel.open {
+        right: 0; /* Slide in */
+      }
+    
+      .discussion-header {
+        padding: 15px;
+        background-color: #343a40;
+        color: white;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    
+      .discussion-header .close-btn {
+        cursor: pointer;
+        font-size: 1.8rem;
+        font-weight: bold;
+        line-height: 1;
+      }
+    
+      .discussion-body {
+        flex-grow: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background-color: #ffffff;
+      }
+    
+      .comment {
+        margin-bottom: 12px;
+      }
+    
+      .comment .username {
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 4px;
+        font-size: 0.9em;
+      }
+    
+      .comment .message {
+        padding: 8px 12px;
+        background-color: #e9ecef;
+        border-radius: 15px;
+        display: inline-block;
+        max-width: 90%;
+        word-wrap: break-word;
+        font-size: 0.95em;
+      }
+      
+      .comment.user-message {
+        text-align: right;
+      }
+
+      .comment.user-message .message {
+        background-color: #71bc42;
+        color: white;
+      }
+      
+      .discussion-footer {
+        padding: 10px;
+        background-color: #f1f1f1;
+        display: flex;
+        border-top: 1px solid #ddd;
+      }
+    
+      .discussion-footer input {
+        flex-grow: 1;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 8px 15px;
+        margin-right: 10px;
+        outline: none;
+      }
+    
+      .discussion-footer button {
+        border: none;
+        background-color: #71bc42;
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 1.2em;
+        line-height: 1;
+      }
+    </style>
+
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 absolute transparent" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+
+          <div class="col-3" data-aos="fade-down">
+            <h1><a href="index.html" class="text-white h2">SPECANCIENS Podcast</a></h1>
+          </div>
+          <div class="col-9" data-aos="fade-down">
+            <nav class="site-navigation position-relative text-right text-md-right" role="navigation">
+
+                
+
+                <div class="d-inline-block ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+                <ul class="site-menu js-clone-nav d-none">
+                    <a href="index.html">Home</a>
+                    <li class="active"><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="site-blocks-cover overlay inner-page-cover" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-7" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="text-white font-weight-light mb-2 display-4">About us</h2>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mb-5" data-aos="fade-up">
+            <h2 class="display-4 mb-5 text-black">The Team</h2>
+          </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Shireesh R</h2>
+            <p>President - SA</p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Syed Imran</h2>
+            <p>Vice President - SA</p>
+            </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_4.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Thakur Akshay Singh</h2>
+            <p>General Secretary - SA</p>
+           </div>
+           <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Sahithi V</h2>
+            <p>Joint Secretary - SA</p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Yash Mittal</h2>
+            <p>Treasurer - SA</p>
+            </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_4.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Lahari Reddy</h2>
+            <p>Joint Treasurer - SA</p>
+           </div>
+           <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Dhananjay N</h2>
+            <p>Executive Member - SA</p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up">
+            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-3">
+            <h2 class="text-black font-weight-light mb-4">Akshitha T</h2>
+            <p>Executive Member - SA</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row" data-aos="fade-up">
+          <div class="col-md-12">
+            <img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid mb-5">
+          </div>
+          <div class="col-md-6">
+            <p>SPECANCIENS, registered under the Societies Registration Act, 1860, is the heartbeat of the alumni community at St. Peter’s Engineering College. We serve as a bridge between past graduates and current students, fostering mentorship, knowledge exchange, and career development.
+
+</p>
+          </div>
+          <div class="col-md-6">
+            <p>By aligning with values, objectives, and initiatives, SPECANCIENS creates a thriving community that not only benefits its members but also enhances the legacy of St. Peter's Engineering College. Together, we are shaping the future with a strong foundation of collaboration, service, and excellence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+    
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="discussion-toggle" title="Open Discussion">💬</div>
+  
+  <div id="live-discussion-panel">
+    <div class="discussion-header">
+      <span>Live Discussion</span>
+      <span class="close-btn">&times;</span>
+    </div>
+    <div class="discussion-body">
+      <div class="comment">
+        <div class="username">Alex</div>
+        <div class="message">This is a great podcast! Really insightful.</div>
+      </div>
+      <div class="comment">
+        <div class="username">Maria</div>
+        <div class="message">Agreed! The guest speaker is fantastic.</div>
+      </div>
+       <div class="comment user-message">
+        <div class="username">You</div>
+        <div class="message">Can't wait for the next episode.</div>
+      </div>
+    </div>
+    <div class="discussion-footer">
+      <input type="text" id="comment-input" placeholder="Type a message...">
+      <button id="send-comment-btn" title="Send">➤</button>
+    </div>
+  </div>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/mediaelement-and-player.min.js"></script>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+                var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+                for (var i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                        shimScriptAccess: 'always',
+                        success: function () {
+                            var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                            for (var j = 0; j < targetTotal; j++) {
+                                target[j].style.visibility = 'visible';
+                            }
+                  }
+                });
+                }
+            });
+    </script>
+
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButton = document.getElementById('discussion-toggle');
+      const discussionPanel = document.getElementById('live-discussion-panel');
+      const closeButton = discussionPanel.querySelector('.close-btn');
+      const sendButton = document.getElementById('send-comment-btn');
+      const commentInput = document.getElementById('comment-input');
+      const discussionBody = discussionPanel.querySelector('.discussion-body');
+  
+      function togglePanel() {
+        discussionPanel.classList.toggle('open');
+      }
+  
+      function addComment() {
+        const messageText = commentInput.value.trim();
+        if (messageText) {
+          const newComment = document.createElement('div');
+          newComment.classList.add('comment', 'user-message');
+          
+          const usernameDiv = document.createElement('div');
+          usernameDiv.classList.add('username');
+          usernameDiv.textContent = 'You';
+  
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add('message');
+          messageDiv.textContent = messageText;
+          
+          newComment.appendChild(usernameDiv);
+          newComment.appendChild(messageDiv);
+          
+          discussionBody.appendChild(newComment);
+          
+          // Scroll to the bottom
+          discussionBody.scrollTop = discussionBody.scrollHeight;
+          
+          // Clear input
+          commentInput.value = '';
+          commentInput.focus();
+        }
+      }
+  
+      toggleButton.addEventListener('click', togglePanel);
+      closeButton.addEventListener('click', togglePanel);
+      
+      sendButton.addEventListener('click', addComment);
+      
+      commentInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          addComment();
+        }
+      });
+    });
+  </script>
+    
+  </body>
+</html>
