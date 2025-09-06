@@ -10,7 +10,6 @@
 
     <!-- Bootstrap + Custom -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
 
     <style>
       body {
@@ -45,31 +44,82 @@
         font-weight: 600;
       }
 
-      /* Episode Cards */
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+      .navbar .logo {
+        text-decoration: none;
+      }
+      .navbar .logo h2 {
+        margin: 0;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: #13ef95;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: #13ef95;
+      }
+
+      /* Episodes Row */
+      .episodes-row {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scrollbar-width: none; /* Firefox */
+      }
+      .episodes-row::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
       .episode-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        padding: 20px;
-        margin-bottom: 30px;
+        flex: 0 0 auto;
+        width: 220px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 15px;
+        padding: 12px;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
         transition: transform 0.3s ease;
       }
       .episode-card:hover {
         transform: translateY(-5px);
       }
       .episode-card img {
-        border-radius: 15px;
-        margin-bottom: 15px;
         width: 100%;
-        height: 200px;
+        height: 140px;
         object-fit: cover;
+        border-radius: 10px;
       }
-      .episode-card h3 {
-        font-weight: 600;
-        font-size: 1.3rem;
+      .episode-card h4 {
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 1.1rem;
       }
       .episode-card p {
-        font-size: 0.95rem;
-        color: #ccc;
+        font-size: 0.9rem;
+        opacity: 0.8;
       }
 
       /* Sticky Audio Player */
@@ -92,57 +142,16 @@
     </style>
   </head>
   <body>
-<!-- Navbar -->
-<!-- Navbar -->
-<nav class="navbar">
-  <a href="index.html" class="logo"><h2>SPECANCIENS</h2></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="single-post.html">Episodes</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<style>
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-  }
-  .navbar .logo {
-    text-decoration: none;
-  }
-  .navbar .logo h2 {
-    margin: 0;
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: #13ef95;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover {
-    color: #13ef95;
-  }
-</style>
-
-
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo"><h2>SPECANCIENS</h2></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="single-post.html">Episodes</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -151,34 +160,37 @@
       <a href="#episodes" class="btn btn-primary">Start Listening</a>
     </section>
 
-    <!-- Episodes Grid -->
+    <!-- Episodes Section -->
     <section id="episodes" class="container py-5">
-      <div class="row">
+      <h2 class="text-center mb-4">🎙 Latest Episodes</h2>
+      <div class="episodes-row">
         <!-- Episode 1 -->
-        <div class="col-md-4">
-          <div class="episode-card">
-            <img src="images/YT ThumbNail (Instagram Post).jpg" alt="Episode 1">
-            <h3>Episode 01: Inspiring SPEC Journey ft. Ms. K. Priyaswi</h3>
-            <p>Ms. Priyaswi shares her cherished experiences and valuable insights from her time at SPEC.</p>
-            <audio controls>
-              <source src="audio/ep1.mp3" type="audio/mp3">
-            </audio>
-          </div>
-        </div>
+        <a href="single-post.html" class="episode-card">
+          <img src="images/YT ThumbNail (Instagram Post).jpg" alt="Episode 1">
+          <h4>Episode 01</h4>
+          <p>Inspiring SPEC Journey ft. Ms. K. Priyaswi</p>
+        </a>
 
         <!-- Episode 2 -->
-        <div class="col-md-4">
-          <div class="episode-card">
-            <img src="images/Ep2.jpg" alt="Episode 2">
-            <h3>Episode 02: What Drives Opportunities? ft. Dr. N. Srikanth</h3>
-            <p>Dr. Srikanth explores the unseen engine behind student success and campus placements.</p>
-            <audio controls>
-              <source src="audio/ep2.mp3" type="audio/mp3">
-            </audio>
-          </div>
-        </div>
+        <a href="single-post2.html" class="episode-card">
+          <img src="images/Ep2.jpg" alt="Episode 2">
+          <h4>Episode 02</h4>
+          <p>What Drives Opportunities? ft. Dr. N. Srikanth</p>
+        </a>
 
-        <!-- Add more episodes here -->
+        <!-- Episode 3 -->
+        <a href="single-post3.html" class="episode-card">
+          <img src="images/Ep3.jpg" alt="Episode 3">
+          <h4>Episode 03</h4>
+          <p>[Your short description here]</p>
+        </a>
+
+        <!-- Episode 4 -->
+        <a href="single-post4.html" class="episode-card">
+          <img src="images/Ep4.jpg" alt="Episode 4">
+          <h4>Episode 04</h4>
+          <p>[Your short description here]</p>
+        </a>
       </div>
     </section>
 
