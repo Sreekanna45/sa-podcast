@@ -11,8 +11,15 @@
 
   <style>
     body { background:#0f0f0f; color:#fff; font-family:'Inter',sans-serif; }
-    .hero { background:linear-gradient(135deg,#ff512f 0%,#dd2476 100%); text-align:center; padding:100px 20px; }
+
+    /* Hero */
+    .hero {
+      background:linear-gradient(135deg,#ff512f 0%,#dd2476 100%);
+      text-align:center; padding:100px 20px;
+      margin-top:70px;
+    }
     .hero h1 { font-size:2.5rem; font-weight:800; }
+
     .section { padding:60px 0; }
     .profile-card {
       background:rgba(255,255,255,0.05);
@@ -25,88 +32,87 @@
     .profile-card img {
       width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px;
     }
+
+    /* Navbar */
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem; background:rgba(0,0,0,0.7);
+      position:fixed; top:0; left:0; width:100%;
+      z-index:1000; backdrop-filter:blur(10px);
+    }
+    .navbar .logo { text-decoration:none; }
+    .navbar .logo h2 {
+      margin:0; font-weight:800; font-size:1.5rem; color:#13ef95;
+    }
+    .nav-links { display:flex; gap:1.5rem; }
+    .nav-links a {
+      color:#fff; text-decoration:none; font-weight:500; transition:color 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color:#13ef95; }
+
+    /* Hamburger */
+    .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; z-index:1100; }
+    .hamburger span { width:25px; height:3px; background:#fff; border-radius:2px; transition:0.3s; }
+
+    @media(max-width:768px){
+      .hamburger { display:flex; }
+      .nav-links {
+        display:none; flex-direction:column; width:100%;
+        background:rgba(0,0,0,0.9); padding:1rem;
+        border-radius:10px; margin-top:10px;
+      }
+      .nav-links.show { display:flex; }
+    }
   </style>
 </head>
 <body>
 <!-- Navbar -->
-<!-- Navbar -->
 <nav class="navbar">
   <a href="index.html" class="logo"><h2>SPECANCIENS</h2></a>
-  <div class="nav-links">
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="single-post.html">Episodes</a>
-    <a href="about.html">About</a>
+    <a href="about.html" class="active">About</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<style>
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-  }
-  .navbar .logo {
-    text-decoration: none;
-  }
-  .navbar .logo h2 {
-    margin: 0;
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: #13ef95;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover {
-    color: #13ef95;
-  }
-</style>
+<!-- Hero -->
+<section class="hero">
+  <h1>About Us</h1>
+  <p>Meet the passionate team behind the SPECANCIENS Podcast.</p>
+</section>
 
-
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>About Us</h1>
-    <p>Meet the passionate team behind the SPECANCIENS Podcast.</p>
-  </section>
-
-  <!-- Team Section -->
-  <section class="container section">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-card">
-          <img src="images/Anusha.jpeg" alt="Anusha">
-          <h3>Anusha Reddy K</h3>
-          <p>Senior Associate – Social Media</p>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="profile-card">
-          <img src="images/Sreenija.jpeg" alt="Sreenija">
-          <h3>Sreenija Chavva</h3>
-          <p>Senior Associate – L&D</p>
-        </div>
+<!-- Team Section -->
+<section class="container section">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-card">
+        <img src="images/Anusha.jpeg" alt="Anusha">
+        <h3>Anusha Reddy K</h3>
+        <p>Senior Associate – Social Media</p>
       </div>
     </div>
-  </section>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
+    <div class="col-md-4">
+      <div class="profile-card">
+        <img src="images/Sreenija.jpeg" alt="Sreenija">
+        <h3>Sreenija Chavva</h3>
+        <p>Senior Associate – L&D</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
 </body>
 </html>
