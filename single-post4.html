@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Episode 04 — SPECANCIENS Podcast</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+    body { background:#0f0f0f; color:#fff; font-family:'Inter',sans-serif; }
+
+    .hero { background:linear-gradient(135deg,#373b44 0%,#4286f4 100%); text-align:center; padding:100px 20px; margin-top:70px; }
+    .hero h1 { font-weight:800; }
+
+    .episode-content { max-width:800px; margin:40px auto; }
+    .episode-audio { background:rgba(255,255,255,0.05); padding:20px; border-radius:15px; margin-bottom:30px; }
+    .episode-nav { margin:40px 0; text-align:center; }
+    .episode-nav a { background:#13ef95; color:#000; font-weight:600; padding:10px 25px; border-radius:30px; text-decoration:none; transition:background 0.3s; }
+    .episode-nav a:hover { background:#10c67e; }
+
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:rgba(0,0,0,0.7); position:fixed; top:0; left:0; width:100%; z-index:1000; backdrop-filter:blur(10px); }
+    .navbar .logo { text-decoration:none; }
+    .navbar .logo h2 { margin:0; font-weight:800; font-size:1.5rem; color:#13ef95; }
+    .nav-links { display:flex; gap:1.5rem; }
+    .nav-links a { color:#fff; text-decoration:none; font-weight:500; transition:color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color:#13ef95; }
+
+    .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; z-index:1100; }
+    .hamburger span { width:25px; height:3px; background:#fff; border-radius:2px; transition:0.3s; }
+    @media(max-width:768px){ .hamburger{display:flex;} .nav-links{display:none; flex-direction:column; width:100%; background:rgba(0,0,0,0.9); padding:1rem; border-radius:10px; margin-top:10px;} .nav-links.show{display:flex;} }
+
+    .btn-summary { background:#13ef95; border:none; color:#000; font-weight:600; border-radius:30px; padding:10px 20px; margin-top:10px; transition:background 0.3s; }
+    .btn-summary:hover { background:#10c67e; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo"><h2>SPECANCIENS</h2></a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="single-post.html">Episodes</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Episode 04: Beyond the Books Dr. K. Sree Latha Madam on Leadership, Innovation & Inspiring Students </h1>
+  <p>ft. Dr. K. Sree Latha — 31 Aug 2025</p>
+  <div style="margin-top:20px; position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%; border-radius:15px;">
+    <iframe src="https://www.youtube.com/embed/s5sP8MzPW7o?si=yLCwMvFQ5FOURoxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:15px;"></iframe>
+  </div>
+</section>
+
+<section class="container episode-content">
+  <div class="episode-audio"><audio controls style="width:100%"><source src="audio/ep4.mp3" type="audio/mp3"></audio></div>
+  <p><strong>Guest:</strong> Dr. Jane Smith talks about fostering innovation and research culture at SPEC.</p>
+
+  <button class="btn btn-summary" type="button" onclick="toggleSummary(this)">Show Summary</button>
+  <div class="episodeSummary" style="display:none; margin-top:15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px;">
+    <p>
+      With 24 years in academia, Dr. K. Shilat Tagaru champions a student-centric, digitally transformed education. She stresses the importance of interdisciplinary skills and strong industry partnerships to prepare students for modern careers. Her journey also sheds light on overcoming gender bias and adapting to a post-pandemic, tech-driven learning environment.
+    </p>
+  </div>
+
+ 
+</section>
+
+<div class="episode-nav">
+  <a href="single-post3.html">← Previous Episode</a>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMenu(){ document.getElementById("navLinks").classList.toggle("show"); }
+  function toggleSummary(button){ const summary = button.nextElementSibling; if(summary.style.display==="none"){ summary.style.display="block"; button.textContent="Hide Summary"; } else { summary.style.display="none"; button.textContent="Show Summary"; } }
+</script>
+</body>
+</html>
